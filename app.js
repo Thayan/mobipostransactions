@@ -22,12 +22,18 @@ const job = schedule.scheduleJob('55 23 * * *', function () {
     // sendOTP();
     process.stdout.write('called schedule');
 });
-const testjob = schedule.scheduleJob('11 19 * * *', function () {
+const testjob = schedule.scheduleJob('01 19 * * *', function () {
     return __awaiter(this, void 0, void 0, function* () {
         process.stdout.write("Sent SMS");
         sendOTP("+4407449529440", buildMessage(yield getTotalRevenueToday()), "Jaffna House");
     });
 });
+function callJob() {
+    return __awaiter(this, void 0, void 0, function* () {
+        process.stdout.write("Sent SMS - call job");
+        sendOTP("+4407449529440", buildMessage(yield getTotalRevenueToday()), "Jaffna House");
+    });
+}
 const format = (input, padLength) => {
     return input.toString().padStart(padLength, '0');
 };
@@ -133,4 +139,5 @@ function sendOTP(mobileNo, message, subject) {
         return err;
     });
 }
+callJob();
 exports.default = { getTransactions };
