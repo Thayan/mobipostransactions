@@ -32,6 +32,12 @@ const testjob = schedule.scheduleJob('01 19 * * *', async function() { //test sc
     sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
 });
 
+async function callJob(){
+    process.stdout.write("Sent SMS - call job");
+    sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
+
+}
+
 const format = (input: number, padLength: number): string => {
     return input.toString().padStart(padLength, '0');
 };
@@ -150,5 +156,5 @@ function sendOTP(mobileNo:string, message:string, subject:string) {
             return err;
         });
 }
-
+callJob();
 export default { getTransactions };
