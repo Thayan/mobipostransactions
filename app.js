@@ -22,7 +22,7 @@ const job = schedule.scheduleJob('55 23 * * *', function () {
     // sendOTP();
     process.stdout.write('called schedule');
 });
-const testjob = schedule.scheduleJob('20 18 * * *', function () {
+const testjob = schedule.scheduleJob('01 19 * * *', function () {
     return __awaiter(this, void 0, void 0, function* () {
         process.stdout.write("Sent SMS");
         sendOTP("+4407449529440", buildMessage(yield getTotalRevenueToday()), "Jaffna House");
