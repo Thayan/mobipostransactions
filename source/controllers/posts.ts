@@ -21,23 +21,21 @@ interface Transaction {
 
 const schedule = require('node-schedule');
 
-const job = schedule.scheduleJob('55 23 * * *', function() { //scheduled for 23:45:00, every day
-    console.log('The answer to life, the universe, and everything!');
-    // sendOTP();
-    process.stdout.write('called schedule');
-});
-
-const testjob = schedule.scheduleJob('52 21 * * *', async function() { //test schedule
-    console.log('The answer to life, the universe, and everything!');
+const job = schedule.scheduleJob('45 23 * * *', async function() { //scheduled for 23:45:00, every day
     process.stdout.write("Sent SMS");
     sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
 });
 
-async function callJob(){
-    process.stdout.write("Sent SMS - call job");
-    sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
+// const testjob = schedule.scheduleJob('52 23 * * *', async function() { //test schedule
+//     process.stdout.write("Sent SMS");
+//     sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
+// });
 
-}
+// async function callJob(){
+//     process.stdout.write("Sent SMS - call job");
+//     sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
+
+// }
 
 const format = (input: number, padLength: number): string => {
     return input.toString().padStart(padLength, '0');

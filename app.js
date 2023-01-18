@@ -17,24 +17,20 @@ const API_LOCATION = "https://cloud.mobi-pos.com/api_access/api_resource";
 const TOKEN = "1e4ead0e0b2bd36a4f595fa4d7f6adcdf987cacb";
 const OUTLET = "outlet1";
 const schedule = require('node-schedule');
-const job = schedule.scheduleJob('55 23 * * *', function () {
-    console.log('The answer to life, the universe, and everything!');
-    // sendOTP();
-    process.stdout.write('called schedule');
-});
-const testjob = schedule.scheduleJob('52 21 * * *', function () {
+const job = schedule.scheduleJob('45 23 * * *', function () {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log('The answer to life, the universe, and everything!');
         process.stdout.write("Sent SMS");
         sendOTP("+4407449529440", buildMessage(yield getTotalRevenueToday()), "Jaffna House");
     });
 });
-function callJob() {
-    return __awaiter(this, void 0, void 0, function* () {
-        process.stdout.write("Sent SMS - call job");
-        sendOTP("+4407449529440", buildMessage(yield getTotalRevenueToday()), "Jaffna House");
-    });
-}
+// const testjob = schedule.scheduleJob('52 23 * * *', async function() { //test schedule
+//     process.stdout.write("Sent SMS");
+//     sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
+// });
+// async function callJob(){
+//     process.stdout.write("Sent SMS - call job");
+//     sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
+// }
 const format = (input, padLength) => {
     return input.toString().padStart(padLength, '0');
 };
