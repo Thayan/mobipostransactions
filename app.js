@@ -22,7 +22,7 @@ const job = schedule.scheduleJob('55 23 * * *', function () {
     // sendOTP();
     process.stdout.write('called schedule');
 });
-const testjob = schedule.scheduleJob('40 21 * * *', function () {
+const testjob = schedule.scheduleJob('48 21 * * *', function () {
     return __awaiter(this, void 0, void 0, function* () {
         console.log('The answer to life, the universe, and everything!');
         process.stdout.write("Sent SMS");
