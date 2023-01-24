@@ -17,10 +17,11 @@ const API_LOCATION = "https://cloud.mobi-pos.com/api_access/api_resource";
 const TOKEN = "1e4ead0e0b2bd36a4f595fa4d7f6adcdf987cacb";
 const OUTLET = "outlet1";
 const schedule = require('node-schedule');
-const job = schedule.scheduleJob('35 20 * * *', function () {
+const job = schedule.scheduleJob('30 23 * * *', function () {
     return __awaiter(this, void 0, void 0, function* () {
         process.stdout.write("Sent SMS");
         sendOTP("+4407449529440", buildMessage(yield getTotalRevenueToday()), "Jaffna House");
+        sendOTP("+447775693383", buildMessage(yield getTotalRevenueToday()), "Jaffna House");
     });
 });
 // const testjob = schedule.scheduleJob('52 23 * * *', async function() { //test schedule
