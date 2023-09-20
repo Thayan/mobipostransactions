@@ -14,24 +14,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const API_LOCATION = "https://cloud.mobi-pos.com/api_access/api_resource";
-const TOKEN = "1e4ead0e0b2bd36a4f595fa4d7f6adcdf987cacb";
+const TOKEN = "[api_token]";
 const OUTLET = "outlet1";
 const schedule = require('node-schedule');
 const job = schedule.scheduleJob('30 23 * * *', function () {
     return __awaiter(this, void 0, void 0, function* () {
         process.stdout.write("Sent SMS");
-        sendOTP("+4407449529440", buildMessage(yield getTotalRevenueToday()), "Jaffna House");
-        sendOTP("+447775693383", buildMessage(yield getTotalRevenueToday()), "Jaffna House");
+        sendOTP("[phone_number]", buildMessage(yield getTotalRevenueToday()), "Jaffna House");
     });
 });
-// const testjob = schedule.scheduleJob('52 23 * * *', async function() { //test schedule
-//     process.stdout.write("Sent SMS");
-//     sendOTP("+447500756347", buildMessage(await getTotalRevenueToday()), "Jaffna House");
-// });
-// async function callJob(){
-//     process.stdout.write("Sent SMS - call job");
-//     sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
-// }
+
 const format = (input, padLength) => {
     return input.toString().padStart(padLength, '0');
 };
