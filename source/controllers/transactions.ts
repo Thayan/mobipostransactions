@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import axios, { AxiosResponse } from 'axios';
 
 const API_LOCATION: string = "https://cloud.mobi-pos.com/api_access/api_resource";
-const TOKEN: string = "1e4ead0e0b2bd36a4f595fa4d7f6adcdf987cacb";
+const TOKEN: string = "[api_token]";
 const OUTLET = "outlet1";
 
 interface Transaction {
@@ -16,19 +16,8 @@ const schedule = require('node-schedule');
 
 const job = schedule.scheduleJob('45 23 * * *', async function() { //scheduled for 23:45:00, every day
     process.stdout.write("Sent SMS");
-    sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
+    sendOTP("[phone_number]", buildMessage(await getTotalRevenueToday()), "Jaffna House");
 });
-
-// const testjob = schedule.scheduleJob('52 23 * * *', async function() { //test schedule
-//     process.stdout.write("Sent SMS");
-//     sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
-// });
-
-// async function callJob(){
-//     process.stdout.write("Sent SMS - call job");
-//     sendOTP("+4407449529440", buildMessage(await getTotalRevenueToday()), "Jaffna House");
-
-// }
 
 const format = (input: number, padLength: number): string => {
     return input.toString().padStart(padLength, '0');
