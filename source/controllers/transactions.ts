@@ -5,13 +5,6 @@ const API_LOCATION: string = "https://cloud.mobi-pos.com/api_access/api_resource
 const TOKEN: string = "1e4ead0e0b2bd36a4f595fa4d7f6adcdf987cacb";
 const OUTLET = "outlet1";
 
-interface Post {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-}
-
 interface Transaction {
     idTransaction: string;
     ReceiptNo: string;
@@ -103,7 +96,6 @@ async function getTotalRevenueToday(): Promise < string > {
         end_date: getDateTimeNight(date),
         outlet: OUTLET
     }));
-    let posts: [Post] = result.data;
     let transactions: [Transaction] = result.data.result.user_data;
     return calculateTransactionsTotal(transactions);
 }
@@ -125,10 +117,9 @@ const getTransactions = async (req: Request, res: Response, next: NextFunction) 
         end_date: getDateTimeNight(date),
         outlet: OUTLET
     }));
-    let posts: [Post] = result.data;
     let transactions: [Transaction] = result.data.result.user_data;
     calculateTransactionsTotal(transactions);
-    return res.status(200).json({ message: posts });
+    return res.status(200).json({ message: "" });
 }
 
 //app.js
